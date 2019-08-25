@@ -2,11 +2,13 @@
 	"name": "Banorte Hack Demo",
 	"version": "1.0",
 	"Description": "Hackaton demo pls",
-	
-	"web_accessible_resources": [
-      "img.png"
- ,"yes.png"
-,"no.png"
+
+  "web_accessible_resources": [
+    "/images/icon16.png",
+    "/images/icon16y.png",
+    "/images/img.png",
+    "/images/yes.png",
+    "/images/no.png"
   ],
 
 

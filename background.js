@@ -1,10 +1,7 @@
-
-
-
 window.onload = function()
 {
     
-chrome.browserAction.setIcon({path:"icon16.png"});
+chrome.browserAction.setIcon({path:"/images/icon16.png"});
 chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
     
 
@@ -19,18 +16,27 @@ var yest= document.getElementById("yes")
 		var check = { active: true, currentWindow: true };
 		if(origin == ban)
 		{	
-		yest.innerHTML='<img src="yes.png" style="width:50%">'
-		 anst.innerHTML= "Sitio Seguro. <br> Usted se encuentra en un sitio perteneciente a Banorte";
-		
+		chrome.runtime.sendMessage({
+   		 action: 'updateIcon',
+    		value: false
+		});		
+		chrome.browserAction.setIcon({path:"/images/icon16y.png"});
+		yest.innerHTML='<img src="/images/yes.png" style="width:50%">'
+		 anst.innerHTML= "<b>Sitio seguro.</b> <br> Usted se encuentra en un sitio perteneciente a Banorte.";
 		} 
 		else
 		{
-		yest.innerHTML='<img src="no.png" style="width:50%">'
-		anst.innerHTML= "Este sitio web no pertenece a Banorte. <br>Su informacion esta en riesgo.";
-		
-		
+		yest.innerHTML='<img src="/images/no.png" style="width:50%">'
+		anst.innerHTML= "<b>Este sitio web no pertenece a Banorte.</b> <br>Su informacion esta en riesgo.";
 		}
-
+chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
+    if (msg.action === "updateIcon") {
+        if (msg.value) {
+            chrome.browserAction.setIcon({path: "/images/icon16y.png"});
+        } else {
+            chrome.browserAction.setIcon({path: "/images/icon16.png"});
+        }
+    }
 });
-	
-}	;
+});
+};
