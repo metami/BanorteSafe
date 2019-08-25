@@ -1,0 +1,31 @@
+{
+	"name": "Banorte Hack Demo",
+	"version": "1.0",
+	"Description": "Hackaton demo pls",
+	
+	"web_accessible_resources": [
+      "img.png"
+ ,"yes.png"
+,"no.png"
+  ],
+
+
+	"permissions": [
+  "tabs",
+  "bookmarks",
+  "activeTab",
+  "http://*.google.com/",
+  "unlimitedStorage"
+],
+	"content_security_policy": "script-src 'self' 'sha256-TsA2O7FFRoCTrpDNDPvjjg5tyXfXjeq4Xnzv0lVc2xI=", 
+	"background":{
+			"scripts":["background.js"],
+			"persistent":false
+			},
+	"browser_action":
+	{
+		          
+		"default_popup": "popup.html"
+	},
+	"manifest_version": 2
+}
